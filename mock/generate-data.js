@@ -18,19 +18,32 @@
     return Math.floor(Math.random() * (max + 1)) + min;
   }
 
-  function phone() {
-    var num = '555'
+  function rands(len, min, max) {
+    var num = ''
       ;
 
-    while (num.length < 10) {
-      num += rand(0, 9);
+    while (num.length < len) {
+      num += rand(min, max);
     }
 
-    if (/911/.test(num)) {
+    return num;
+  }
+
+  function phone() {
+    var num = rands(7, 0, 9)
+      ;
+
+    if (/911/.test(num) || /^0/.test(num)) {
       return phone();
     }
 
     num = num.split('');
+    if (rand(0,1)) {
+      num.splice(0, 0, 5, 5, 5);
+    } else {
+      num.splice(3, 0, 5, 5, 5);
+    }
+
     return '(' + num.splice(0, 3).join('') + ') '
       + num.splice(0, 3).join('')
       + '-' + num.splice(0, 4).join('')
@@ -44,11 +57,13 @@
       , name
       , nick
       , last
+      , gender
       ;
 
     name = record[0];
     nick = record[1];
     last = record[2];
+    gender = ('m' === record[3] ? 'male' : 'female');
 
     member = {
       name: name
