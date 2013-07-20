@@ -34,11 +34,11 @@ Goals
 Development Tools
 ---
 
-  * rvm
+  * [rvm](http://rvm.io)
   * ruby 2
   * rails 4
+  * [slim](http://slim-lang.com/)
   * git
-  * slim
 
 Get it
 
