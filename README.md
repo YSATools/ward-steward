@@ -3,6 +3,9 @@ ward-steward
 
 Home Teaching App
 
+Goals
+---
+
   * use lds.org backend
 
   * view
@@ -27,3 +30,23 @@ Home Teaching App
   * create appointments
     * WhenIsGood-style?
     * text reminders?
+
+Development Tools
+---
+
+  * rvm
+  * ruby 2
+  * rails 4
+  * git
+  * slim
+
+Get it
+
+    rvm use 2.0.0
+    gem install rails
+
+    git clone git@github.com:coolaj86/ward-steward.git
+    pushd ward-steward
+    bundle install
+
+    rackup -p 3000
