@@ -4,33 +4,71 @@
   var $p = require('pure').$p
     , $ = window.jQuery
     , data = require('./lib/data')
-    , rfn
+    , tpls = {}
     ;
 
-  function init() {
-    var dir
-      ;
+  tpls.self = {};
+  tpls.comps = {};
+  tpls.hts = {};
+  tpls.stews = {};
 
-    dir = {
+  function nickOrName(ctx) {
+    return ctx.item.nick || ctx.item.name;
+  }
+
+  function init() {
+    tpls.self.dir = {
       ".js-person": {
         "p <- persons": {
-          ".js-name": "p.name"
+          ".js-name": nickOrName
+        , ".js-last": "p.last"
         , ".js-phone": "p.phone"
         , ".js-email": "p.email"
         }
       }
     };
 
-    rfn = $p('.js-me').compile(dir);
+    function createChecker(type, key) {
+      return function (ctx) {
+        if (type === ctx.item[key]) {
+          return 'checked';
+        }
+      };
+    }
+    tpls.stews.dir = {
+      ".js-person": {
+        "p <- persons": {
+          ".js-name": nickOrName
+        , ".js-last": "p.last"
+        , ".js-phone": "p.phone"
+        , ".js-email": "p.email"
+        , ".js-visits": {
+            "v <- visits": {
+              ".js-message": "v.message"
+            , ".js-home@checked": createChecker('home', 'type')
+            , ".js-video@checked": createChecker('video', 'type')
+            , ".js-phone@checked": createChecker('phone', 'type')
+            , ".js-other@checked": createChecker('other', 'type')
+            , ".js-none@checked": createChecker('other', 'type')
+            }
+          }
+        }
+      }
+    };
+
+    tpls.self.rfn = $p('.js-me .js-person-tpl').compile(tpls.self.dir);
+    tpls.stews.rfn = $p('.js-stewardship .js-person-tpl').compile(tpls.stews.dir);
+    tpls.comps.rfn = tpls.self.rfn;
+    tpls.hts.rfn = tpls.self.rfn;
   }
 
   function render() {
     console.log('data');
     console.log(data);
-    $p('.js-me').render({ persons: [data.me] }, rfn);
-    $p('.js-stewardship').render({ persons: data.stewardship }, rfn);
-    $p('.js-companions').render({ persons: data.companions }, rfn);
-    $p('.js-ht').render({ persons: data.homeTeachers }, rfn);
+    $p('.js-me .js-person-tpl').render({ persons: [data.me] }, tpls.self.rfn);
+    $p('.js-stewardship .js-person-tpl').render({ persons: data.stewardship }, tpls.stews.rfn);
+    $p('.js-companions .js-person-tpl').render({ persons: data.companions }, tpls.comps.rfn);
+    $p('.js-ht .js-person-tpl').render({ persons: data.homeTeachers }, tpls.hts.rfn);
   }
 
   $(init);

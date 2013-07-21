@@ -1,0 +1,24 @@
+form
+  div
+    div Visited 
+    label(class="radio")  home 
+      input.js-home(type="radio", name="type", value="home")
+    label(class="radio")  video 
+      input.js-video(type="radio", name="type", value="video")
+    label(class="radio")  phone 
+      input.js-phone(type="radio", name="type", value="phone")
+    label(class="radio")  other
+      input.js-other(type="radio", name="type", value="other")
+    label(class="radio")  none 
+      input.js-none(type="radio", name="type", value="none")
+
+  div
+    div Lesson
+    label(class="checkbox") Presidency Message
+      input.js-message(type="checkbox", name="message")
+
+  div
+    label  How are they doing? 
+    textarea.js-report
+  div
+    button(type="submit") Update Report

@@ -16,3 +16,6 @@
 /tmp
 
 node_modules
+pakmanaged.*
+/public/stylesheets/style.css
+/public/index.html

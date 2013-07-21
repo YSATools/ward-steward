@@ -31,6 +31,20 @@ Goals
     * WhenIsGood-style?
     * text reminders?
 
+
+Core Principles
+---
+
+This is being created with the belief that the most important
+metrics of home teaching are whether or not **every member**
+believes that they **have a friend** in the ward and whether or
+not each member has **someone to turn to for a blessing** when
+there **isn't a member of the priesthood** presiding over the **home**.
+
+Although it may be difficult to compute such measures,
+our goal is to make it easier to make visits and gather
+(hopefully) useful data.
+
 Development Tools
 ---
 

@@ -2,48 +2,70 @@
 //-doctype html
 html
   head
+    link(href="/bootstrap/css/bootstrap.css", rel="stylesheet", media="screen")
+    link(href="/stylesheets/style.css", rel="stylesheet", media="screen")
+
+    script(src="http://localhost:35729/livereload.js")
     script(src="/javascripts/jquery-2.0.3.min.js")
+    script(src="/bootstrap/js/bootstrap.js")
     script(src="/javascripts/pakmanaged.js")
   body
+
     .container
-      .me-container
+      .row
+        .span3.me-container
+          h2 Myself
+          .js-me
+            .js-person-tpl
+              .js-person
+                div
+                  span.js-name AJ
+                  span   
+                  span.js-last ONeal
+                //-img.js-pic(src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc1/c170.50.621.621/s160x160/304335_10151114117680502_1732124793_n.jpg")
+                .js-phone 317-426-6525
+                .js-email coolaj86@gmail.com
 
-        h2 Myself
-        .js-me
-          .js-person
-            .js-name AJ ONeal
-            //-img.js-pic(src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc1/c170.50.621.621/s160x160/304335_10151114117680502_1732124793_n.jpg")
-            .js-phone 317-426-6525
-            .js-email coolaj86@gmail.com
+          h2 My Home Teachers
+          .js-ht
+            .js-person-tpl
+              .js-person
+                .js-name John Doe
+                img.js-pic(src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/c44.44.552.552/s160x160/1045212_10151587833263495_913206371_n.jpg")
+                .js-phone 555-466-6555
+                .js-email john.doe@email.com
 
-        h2 My Home Teachers
-        .js-ht
-          .js-person
-            .js-name John Doe
-            img.js-pic(src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-prn1/c44.44.552.552/s160x160/1045212_10151587833263495_913206371_n.jpg")
-            .js-phone 555-466-6555
-            .js-email john.doe@email.com
+          //-.js-vt
+            .js-person-tpl
+              .js-person
+                .js-name Sarah Plain
+                img.js-pic(src="https://profile-b.xx.fbcdn.net/hprofile-ash4/c45.45.560.560/s160x160/198288_10151044512014859_1127919417_n.jpg")
+                .js-phone 555-422-5334
+                .js-email sarah.plain@example.com
 
-        //-.js-vt
-          .js-person
-            .js-name Sarah Plain
-            img.js-pic(src="https://profile-b.xx.fbcdn.net/hprofile-ash4/c45.45.560.560/s160x160/198288_10151044512014859_1127919417_n.jpg")
-            .js-phone 555-422-5334
-            .js-email sarah.plain@example.com
+        .span9.stewardship-container
+          h2 My Companions
+          .js-companions
+            .js-person-tpl
+              .js-person
+                .js-name Bob Dole
+                img.js-pic(src="#")
+                .js-phone 422-555-5334
+                .js-email bob.dole@email.net
 
-      .stewardship-container
-        h2 My Companions
-        .js-companions
-          .js-person
-            .js-name Bob Dole
-            img.js-pic(src="#")
-            .js-phone 422-555-5334
-            .js-email bob.dole@email.net
+          div(style="clear: both;")
+          h2 My HT/VT Stewardship
+          .js-stewardship
+            .js-person-tpl
+              .js-person
+                span.js-name AJ
+                span   
+                span.js-last ONeal
+                img.js-pic(src="#")
+                .js-phone 533-555-4422
+                .js-email bob.dole@email.net
+                .js-visits
+                  include includes/report
+                .js-report
+                  include includes/report
 
-        h2 My HT/VT Stewardship
-        .js-stewardship
-          .js-person
-            .js-name Jack Johnson
-            img.js-pic(src="#")
-            .js-phone 533-555-4422
-            .js-email bob.dole@email.net
