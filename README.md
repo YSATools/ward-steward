@@ -50,3 +50,14 @@ Get it
     bundle install
 
     rackup -p 3000
+
+Build the browser
+
+    pushd ward-steward
+    pushd browser
+    npm install
+    grunt
+    
+See the vision
+
+  <https://gomockingbird.com/mockingbird/#3gf6yam>
