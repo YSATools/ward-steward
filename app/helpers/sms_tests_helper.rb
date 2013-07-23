@@ -1,0 +1,2 @@
+module SmsTestsHelper
+end
