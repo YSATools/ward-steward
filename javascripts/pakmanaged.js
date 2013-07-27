@@ -1102,6 +1102,31 @@ var global = Function("return this;")();
   provide("ward-steward-browser/lib/mock/dashboard-data", module.exports);
 }(global));
 
+// pakmanager:ward-steward-browser/lib/login
+(function (context) {
+  
+  var module = { exports: {} }, exports = module.exports
+    , $ = require("ender")
+    ;
+  
+  (function () {
+      "use strict";
+    
+      var login = module.exports
+        ;
+    
+      login.init = function () {
+      };
+    
+      login.login = function (cb) {
+        console.log('no login strategy');
+        cb(null, {});
+      };
+    }());
+    
+  provide("ward-steward-browser/lib/login", module.exports);
+}(global));
+
 // pakmanager:ward-steward-browser/lib/dashboard
 (function (context) {
   
@@ -1195,18 +1220,53 @@ var global = Function("return this;")();
     , $ = require("ender")
     ;
   
-  (function () {
+  jQuery(function () {
       "use strict";
     
-      var dashboard =  require('ward-steward-browser/lib/dashboard')
-        , $ = window.jQuery
+      var login =  require('ward-steward-browser/lib/login')
+        , dashboard =  require('ward-steward-browser/lib/dashboard')
+        , $ = jQuery
+        , $events = $('body')
         ;
     
       $(function () {
+        login.init();
+    
+        // TODO make modal / overlay
+        $('.js-nav').hide();
+        $('.js-pill-content').hide();
+    
+        $events.on('submit', '.js-form-signin', function (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+    
+          login.login(function (err, user) {
+            console.log('success', user);
+    
+            $('.js-sign-in').hide();
+            $('.js-nav').show();
+            $('.js-pill-content').show();
+            $('#js-nav-tab a:last').tab('show');
+            //$('.js-dashboard').show();
+            if (true || user.admin) {
+              $('.js-assignments-tab').show();
+            }
+          });
+        });
+    
+        // http://twitter.github.io/bootstrap/javascript.html#tabs
+        // See the methods section
+        //$events.on('click', '#js-nav-tab a', function (e) {
+        $('#js-nav-tab a').click(function (e) {
+          console.log('hello!');
+          e.preventDefault();
+          $(this).tab('show');
+        });
+    
         dashboard.init();
         dashboard.render();
       });
-    }());
+    });
     
   provide("ward-steward-browser", module.exports);
 }(global));
