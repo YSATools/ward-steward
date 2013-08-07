@@ -3,6 +3,8 @@ ward-steward
 
 Home Teaching App
 
+See the mockup at <https://gomockingbird.com/mockingbird/#3gf6yam>.
+
 Goals
 ---
 
